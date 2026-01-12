@@ -1,8 +1,22 @@
+:root {
+    --text-color: white;
+    --bg-overlay: rgba(0, 98, 18, 0.65);
+    --green-main: #6aa84f;
+    --green-border: #93c47d;
+}
+
+body.dark {
+    --text-color: #ff9500;
+    --bg-overlay: rgba(255, 255, 255, 0.75);
+    --green-main: #274e13;
+    --green-border: #ae6300;
+}
+
 body {
     margin: 0;
     font-family: 'Minecraft', sans-serif;
     background-color: #6aa84f;
-    color: white;
+    color: rgb(183, 183, 183);
     transition: 0.3s;
 }
 
@@ -14,8 +28,16 @@ body {
 .hero {
     height: 100vh;
     background:
-        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
         url("image-header.png");
+    background-size: cover;
+    background-position: center;
+    
+}
+.dark .hero {
+    background:
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+        url("nether.png");
     background-size: cover;
     background-position: center;
 }
@@ -26,6 +48,14 @@ body {
     padding: 1.25em 2.5em; /* 20px 40px */
     background: #3b8526;
     border-bottom: 0.25em solid #1e4d14; /* 4px */
+}
+.dark .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.25em 2.5em; /* 20px 40px */
+    background: #2d0000;
+    border-bottom: 0.25em solid #8e4900; /* 4px */
+
 }
 
 .nav-links a,
@@ -39,22 +69,33 @@ body {
     text-decoration: none;
     color: black;
 }
-
+.dark .nav-links a,
+#darkModeBtn {
+    margin-left: 0.9375em; /* 15px */
+    padding: 0.625em 1.25em; /* 10px 20px */
+    background: #000000;
+    border: 0.1875em solid #420000; /* 3px */
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(156, 81, 0);
+}
 .hero-content {
     height: calc(100vh - 5em); /* 80px */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: 2em;
 }
 
 .section {
-    padding: 5em 1.25em; /* 80px 20px */
+    padding: 2.5em 1.25em; /* 80px 20px */
     text-align: center;
 }
 
 .projects {
-    margin-top: 2.5em; /* 40px */
+    margin-top: 5em; /* 40px */
 }
 
 .project-btn {
@@ -64,18 +105,27 @@ body {
     background: #8fce00;
     border: 0.1875em solid #38761d;
     text-decoration: none;
-    color: black;
+    color: rgb(0, 0, 0);
 }
 
 .footer {
-    background: #0d0d0d;
+    background: #1e4d14;
     text-align: center;
     padding: 3.125em 1.25em; /* 50px 20px */
 }
-
+.dark .footer {
+    background: #2f0c00;
+    text-align: center;
+    padding: 3.125em 1.25em; /* 50px 20px */
+}
 .footer-links a {
     margin: 0 0.9375em; /* 15px */
-    color: #bbb;
+    color: #848484;
+    text-decoration: none;
+}
+.dark .footer-links a {
+    margin: 0 0.9375em; /* 15px */
+    color: #a00000;
     text-decoration: none;
 }
 
@@ -90,7 +140,7 @@ body {
     max-width: 37.5em; /* 600px */
     background: rgba(0,0,0,0.6);
     padding: 2.5em; /* 40px */
-    color: white;
+    color: rgb(174, 174, 174);
 }
 
 .right { margin-left: auto; }
@@ -160,13 +210,16 @@ body {
     background-position: center;
     padding: 7.5em 5em; /* 120px 80px */
 }
+.dark .projects-section {
+    background-image: url("dark-fond-projet.png");
+}
 
 .black-bar {
     position: absolute;
     left: 0;
     width: 100%;
     height: 3.75em; /* 60px */
-    background: black;
+    background: rgb(0, 0, 0);
     z-index: 1;
 }
 
@@ -201,7 +254,7 @@ body {
     width: 100%;
     height: 13.75em; /* 220px */
     object-fit: cover;
-    border: 0.1875em solid black; /* 3px */
+    border: 0.1875em solid rgb(0, 0, 0); /* 3px */
 }
 
 .project-card p {
@@ -210,5 +263,29 @@ body {
 }
 
 .dark .project-card {
-    background: rgba(20, 20, 20, 0.85);
+    background: rgba(0, 0, 0, 0.85);
+}
+body {
+    color: var(--text-color);
+}
+
+h1, h2, h3, div {
+    color: var(--text-color);
+}
+
+.project-card,
+.contact-card,
+.about-box {
+    background: var(--bg-overlay);
+    border-color: var(--green-border);
+}
+
+button {
+    background: var(--green-main);
+    color: var(--text-color);
+    border: 3px solid var(--green-border);
+}
+
+.project-card p {
+    color: var(--text-color);
 }
