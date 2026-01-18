@@ -30,3 +30,99 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire de contact</title>
+    <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Formulaire de contact</h1>
+
+    <form id="contactForm">
+
+        <!-- Champ Nom -->
+        <div>
+            <label for="name">Nom :</label><br>
+            <input type="text" id="name">
+            <!-- Message d'erreur pour le nom -->
+            <p class="error" id="nameError"></p>
+        </div>
+
+        <br>
+
+        <!-- Champ Message -->
+        <div>
+            <label for="message">Message :</label><br>
+            <textarea id="message"></textarea>
+            <!-- Message d'erreur pour le message -->
+            <p class="error" id="messageError"></p>
+        </div>
+
+        <br>
+
+        <button type="submit">Envoyer</button>
+
+        <!-- Message de succès -->
+        <p class="success" id="successMessage"></p>
+
+    </form>
+    <!-- Fin du formulaire -->
+
+    <script>
+        // Sélection du formulaire
+        const form = document.getElementById("contactForm");
+
+        // Écoute de l'événement "submit"
+        form.addEventListener("submit", function(event) {
+
+            // Empêche l'envoi réel du formulaire
+            event.preventDefault();
+
+            // Sélection des champs
+            const nameInput = document.getElementById("name");
+            const messageInput = document.getElementById("message");
+
+            // Sélection des messages d’erreur et de succès
+            const nameError = document.getElementById("nameError");
+            const messageError = document.getElementById("messageError");
+            const successMessage = document.getElementById("successMessage");
+
+            // Réinitialisation des messages
+            nameError.textContent = "";
+            messageError.textContent = "";
+            successMessage.textContent = "";
+
+            // Variable pour savoir si le formulaire est valide
+            let isValid = true;
+
+            // Vérification du champ nom
+            if (nameInput.value.trim() === "") {
+                nameError.textContent = "Le nom doit être rempli";
+                isValid = false;
+            }
+
+            // Vérification du champ message (au moins 10 caractères)
+            if (messageInput.value.trim().length < 10) {
+                messageError.textContent = "Le message doit contenir au moins 10 caractères";
+                isValid = false;
+            }
+
+            // Si toutes les conditions sont remplies
+            if (isValid) {
+                // Message de confirmation
+                successMessage.textContent = "Message bien envoyé";
+
+                // Vidage des champs
+                nameInput.value = "";
+                messageInput.value = "";
+            }
+        });
+    </script>
+
+</body>
+</html>
+
